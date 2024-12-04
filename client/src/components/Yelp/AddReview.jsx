@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import RestaurantFinder from "../apis/RestaurantFinder";
+import RestaurantFinder from "../../apis/RestaurantFinder";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
+import './Yelp.css';
 
 const AddReview = () => {
   const { id } = useParams();

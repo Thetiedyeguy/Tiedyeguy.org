@@ -1,8 +1,9 @@
 import React, {useContext, useEffect} from 'react'
-import RestaurantFinder from '../apis/RestaurantFinder';
-import { RestaurantsContext } from '../context/RestaurantsContext';
+import RestaurantFinder from '../../apis/RestaurantFinder';
+import { RestaurantsContext } from '../../context/RestaurantsContext';
 import { useNavigate } from 'react-router-dom';
 import StarRating from './StarRating';
+import './Yelp.css';
 
 function RestaurantList() {
     const {restaurants, setRestaurants} = useContext(RestaurantsContext);

@@ -1,7 +1,7 @@
 import React from 'react';
-import YelpHeader from '../components/YelpHeader';
-import AddRestaurant from '../components/AddRestaurant';
-import RestaurantList from '../components/RestaurantList';
+import YelpHeader from '../components/Yelp/YelpHeader';
+import AddRestaurant from '../components/Yelp/AddRestaurant';
+import RestaurantList from '../components/Yelp/RestaurantList';
 
 const Yelp = () => {
   return (

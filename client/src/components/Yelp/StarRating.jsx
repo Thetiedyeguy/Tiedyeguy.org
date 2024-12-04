@@ -1,4 +1,5 @@
 import React from 'react';
+import './Yelp.css';
 
 const StarRating = ({rating}) => {
     const stars  = [];

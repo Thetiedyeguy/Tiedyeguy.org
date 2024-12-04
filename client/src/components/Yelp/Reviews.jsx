@@ -1,5 +1,6 @@
 import React from "react";
 import StarRating from "./StarRating";
+import './Yelp.css';
 
 const Reviews = ({ reviews }) => {
   return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"; 
 import { useParams, useNavigate} from "react-router-dom";
-import RestaurantFinder from "../apis/RestaurantFinder";
+import RestaurantFinder from "../../apis/RestaurantFinder";
+import './Yelp.css';
 
 const UpdateRestaurant = (props) => {
   const { id } = useParams();

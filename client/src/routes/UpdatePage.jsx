@@ -1,5 +1,5 @@
 import React from "react";
-import UpdateRestaurant from "../components/UpdateRestaurant";
+import UpdateRestaurant from "../components/Yelp/UpdateRestaurant";
 
 const UpdatePage = () => {
   return (
