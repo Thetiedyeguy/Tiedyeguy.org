@@ -1,0 +1,91 @@
+/* DropdownMenu.module.css */
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    z-index: 1000;
+  }
+  
+  /* Top Bar */
+  .topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Height of the top bar */
+    background-color: #444;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .limitedInfo a {
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .limitedInfo a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Expand Button */
+  .expandButton {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 1px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .expandButton:hover {
+    background-color: #555;
+  }
+  
+  /* Expanded Menu */
+  .expandedMenu {
+    position: fixed;
+    top: 50px; /* Start just below the top bar */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Cover the entire page */
+    background-color: rgba(55, 55, 55, 0.95);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensures it's above everything else */
+  }
+  
+  .expandedMenu ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .expandedMenu li {
+    margin: 10px 0;
+  }
+  
+  .expandedMenu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .expandedMenu a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Page Offset for Top Bar */
+  body {
+    margin-top: 50px; /* Offset for the fixed top bar */
+  }
+  
