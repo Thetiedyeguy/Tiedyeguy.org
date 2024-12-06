@@ -19,7 +19,7 @@ const DropdownMenu = () => {
           <Link to="/games">Games</Link>
         </div>
         <button className={styles.expandButton} onClick={toggleExpand}>
-          {isExpanded ? '▲' : '▼'}
+          {isExpanded ? '\u25B2' : '\u25BC'}
         </button>
       </div>
 
