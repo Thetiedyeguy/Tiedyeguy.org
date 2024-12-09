@@ -20,7 +20,7 @@ function LinkList() {
             <tbody>
                 <tr onClick={() => handleLinkSelect('yelp')} key = 'yelp'>
                     <td>Yelp</td>
-                    <td>First full stack app I ever made based on a YouTube tutorial at https://www.youtube.com/watch?v=7qAXvOFhlDc&t=0s&ab_channel=SanjeevThiyagarajan</td>
+                    <td>First full stack application I made based on this <a href="https://www.youtube.com/watch?v=7qAXvOFhlDc&t=0s&ab_channel=SanjeevThiyagarajan" target="_blank" rel="noopener noreferrer">YouTube tutorial</a></td>
                 </tr>
                 <tr onClick={() => handleLinkSelect('games')} key = 'games'>
                     <td>Games</td>

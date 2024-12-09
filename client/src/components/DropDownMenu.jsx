@@ -18,9 +18,9 @@ const DropdownMenu = () => {
           <Link to="/yelp">Yelp</Link>
           <Link to="/games">Games</Link>
         </div>
-        <button className={styles.expandButton} onClick={toggleExpand}>
+        {/* <button className={styles.expandButton} onClick={toggleExpand}>
           {isExpanded ? '\u25B2' : '\u25BC'}
-        </button>
+        </button> */}
       </div>
 
       {/* Expanded Content */}

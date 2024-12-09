@@ -1,0 +1,38 @@
+/* ContactInfo.module.css */
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    z-index: 1000;
+  }
+  
+  .contactList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .contactList li {
+    display: inline;
+    font-size: 16px;
+  }
+  
+  .contactList a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .contactList a:hover {
+    text-decoration: underline;
+  }
+  
