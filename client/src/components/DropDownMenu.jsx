@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
+import { useUser } from '../context/Context';
 import { Link } from 'react-router-dom'; // Assuming React Router is used
+import Modal from './Modal';
 import styles from './DropdownMenu.module.css';
 
 const DropdownMenu = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const {user, setUser} = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleSignOut = () => {
+    setUser(null); // Sign the user out
+    localStorage.removeItem('token');
+  };
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -18,6 +27,26 @@ const DropdownMenu = () => {
           <Link to="/yelp">Yelp</Link>
           <Link to="/games">Games</Link>
         </div>
+        <div className={styles.auth}>
+          {user ? (
+            <>
+              <span className={styles.username}>Welcome, {user.name}</span>
+              <button className={styles.signOutButton} onClick={handleSignOut}>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <button className={styles.signInButton} onClick={() => setIsModalOpen(true)}>
+              Sign In
+            </button>
+          )}
+        </div>
+        {isModalOpen && (
+          <Modal
+            closeModal={() => setIsModalOpen(false)}
+            setUser={setUser}
+          />
+        )}
         {/* <button className={styles.expandButton} onClick={toggleExpand}>
           {isExpanded ? '\u25B2' : '\u25BC'}
         </button> */}

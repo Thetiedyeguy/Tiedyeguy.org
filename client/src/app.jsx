@@ -5,11 +5,11 @@ import DetailPage from './routes/DetailPage';
 import Home from './routes/Home'
 import Yelp from './routes/Yelp';
 import Games from './routes/Games';
-import { RestaurantsContextProvider } from './context/RestaurantsContext';
+import { ContextProvider } from './context/Context';
 
 const App = () => {
     return (
-        <RestaurantsContextProvider>
+        <ContextProvider>
             <div className='container'>
                 <Router>
                     <Routes>
@@ -21,7 +21,7 @@ const App = () => {
                     </Routes>
                 </Router>
             </div>
-        </RestaurantsContextProvider>
+        </ContextProvider>
     )
 };
 

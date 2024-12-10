@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import RestaurantFinder from "../../apis/RestaurantFinder";
-import { RestaurantsContext } from "../../context/RestaurantsContext";
+import { Context } from "../../context/Context";
 import './Yelp.css';
 
 const AddRestaurant = () => {
-  const { addRestaurants } = useContext(RestaurantsContext);
+  const { addRestaurants } = useContext(Context);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("Price Range");

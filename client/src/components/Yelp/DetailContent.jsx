@@ -3,14 +3,14 @@ import Reviews from "./Reviews";
 import AddReview from "./AddReview";
 import React, { useContext, useEffect} from "react";
 import { useParams } from 'react-router-dom'
-import { RestaurantsContext } from '../../context/RestaurantsContext';
+import { Context } from '../../context/Context';
 import RestaurantFinder from '../../apis/RestaurantFinder';
 import './Yelp.css';
 
 const DetailContent = () => {
   const { id } = useParams();
   const { selectedRestaurant, setSelectedRestaurant } = useContext(
-    RestaurantsContext
+    Context
   );
 
   useEffect(() => {

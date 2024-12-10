@@ -88,4 +88,36 @@
   body {
     margin-top: 50px; /* Offset for the fixed top bar */
   }
+
+  .links a {
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+
+  .auth {
+    display: flex;
+    align-items: center;
+  }
+  
+  .username {
+    margin-right: 10px;
+  }
+  
+  .signInButton, .signOutButton {
+    padding: 5px 10px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .signInButton:hover, .signOutButton:hover {
+    background-color: #0056b3;
+  }
   
