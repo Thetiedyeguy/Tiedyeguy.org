@@ -23,6 +23,7 @@ const DropdownMenu = () => {
           <Link to="/">Tiedyeguy.org</Link>
           <Link to="/yelp">Yelp</Link>
           <Link to="/games">Games</Link>
+          <Link to="/posts">Posts</Link>
         </div>
         <div className={styles.auth}>
           {user ? (

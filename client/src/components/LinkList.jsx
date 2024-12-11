@@ -26,6 +26,10 @@ function LinkList() {
                     <td>Games</td>
                     <td>A random assortment of games I made for fun</td>
                 </tr>
+                <tr onClick={() => handleLinkSelect('posts')} key='posts'>
+                    <td>Posts</td>
+                    <td>All the posts made on individuals profiles</td>
+                </tr>
             </tbody>
         </table>
     </div>

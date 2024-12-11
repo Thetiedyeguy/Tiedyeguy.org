@@ -4,7 +4,7 @@ import { useUser } from '../context/Context';
 import UserFinder from '../apis/UserFinder';
 import styles from './ProfilePage.module.css';
 import { useNavigate } from 'react-router-dom';
-console.log('Styles:', styles);
+import DropDownMenu from '../components/DropDownMenu'
 
 const ProfilePage = () => {
   let navigate = useNavigate();
@@ -65,69 +65,72 @@ const ProfilePage = () => {
   if (!profile) return <p>Loading...</p>;
 
   return (
-    <div className={styles.profileContainer}>
-        <h1 className={styles.sectionHeader}>{username}'s Profile</h1>
-          {editable && (
-            <button className={styles.signOutButton} onClick={handleSignOut}>
-              Sign Out
-            </button>
-          )}
-        {editable ? (
-            <div className={styles.profileInfo}>
-            <input
-                type="text"
-                value={profile.name || ''}
-                onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                placeholder="Name"
-            />
-            <input
-                type="email"
-                value={profile.email || ''}
-                onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                placeholder="Email"
-            />
-            <input
-                type="text"
-                value={profile.phone_number || ''}
-                onChange={(e) => setProfile({ ...profile, phone_number: e.target.value })}
-                placeholder="Phone Number"
-            />
-            <input
-                type="number"
-                value={profile.age || ''}
-                onChange={(e) => setProfile({ ...profile, age: e.target.value })}
-                placeholder="Age"
-            />
-            <button className={styles.saveButton} onClick={handleSave}>Save</button>
-            </div>
-        ) : (
-            <div className={styles.profileInfo}>
-            <p>Name: {profile.name}</p>
-            <p>Email: {profile.email}</p>
-            <p>Phone: {profile.phone_number}</p>
-            <p>Age: {profile.age}</p>
-            </div>
-        )}
-        <div className={styles.blogPosts}>
-            <h2 className={styles.sectionHeader}>Posts</h2>
-            {posts.map((post) => (
-            <div key={post.id} className={styles.post}>
-                <p>{post.content}</p>
-                <small>{new Date(post.created_at).toLocaleString()}</small>
-            </div>
-            ))}
+    <div>
+      <DropDownMenu/>
+      <div className={styles.profileContainer}>
+          <h1 className={styles.sectionHeader}>{username}'s Profile</h1>
             {editable && (
-            <div className={styles.newPostContainer}>
-                <textarea
-                rows="4"
-                value={newPost}
-                onChange={(e) => setNewPost(e.target.value)}
-                placeholder="Write a new post..."
-                ></textarea>
-                <button className={styles.submitButton} onClick={handlePostSubmit}>Submit</button>
-            </div>
+              <button className={styles.signOutButton} onClick={handleSignOut}>
+                Sign Out
+              </button>
             )}
-        </div>
+          {editable ? (
+              <div className={styles.profileInfo}>
+              <input
+                  type="text"
+                  value={profile.name || ''}
+                  onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                  placeholder="Name"
+              />
+              <input
+                  type="email"
+                  value={profile.email || ''}
+                  onChange={(e) => setProfile({ ...profile, email: e.target.value })}
+                  placeholder="Email"
+              />
+              <input
+                  type="text"
+                  value={profile.phone_number || ''}
+                  onChange={(e) => setProfile({ ...profile, phone_number: e.target.value })}
+                  placeholder="Phone Number"
+              />
+              <input
+                  type="number"
+                  value={profile.age || ''}
+                  onChange={(e) => setProfile({ ...profile, age: e.target.value })}
+                  placeholder="Age"
+              />
+              <button className={styles.saveButton} onClick={handleSave}>Save</button>
+              </div>
+          ) : (
+              <div className={styles.profileInfo}>
+              <p>Name: {profile.name}</p>
+              <p>Email: {profile.email}</p>
+              <p>Phone: {profile.phone_number}</p>
+              <p>Age: {profile.age}</p>
+              </div>
+          )}
+          <div className={styles.blogPosts}>
+              <h2 className={styles.sectionHeader}>Posts</h2>
+              {posts.map((post) => (
+              <div key={post.id} className={styles.post}>
+                  <p>{post.content}</p>
+                  <small>{new Date(post.created_at).toLocaleString()}</small>
+              </div>
+              ))}
+              {editable && (
+              <div className={styles.newPostContainer}>
+                  <textarea
+                  rows="4"
+                  value={newPost}
+                  onChange={(e) => setNewPost(e.target.value)}
+                  placeholder="Write a new post..."
+                  ></textarea>
+                  <button className={styles.submitButton} onClick={handlePostSubmit}>Submit</button>
+              </div>
+              )}
+          </div>
+      </div>
     </div>
   );
 };
