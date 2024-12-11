@@ -35,7 +35,7 @@ const Modal = ({ closeModal, setUser }) => {
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
         <button className={styles.closeButton} onClick={closeModal}>
-          ✖
+          X
         </button>
         <h2>{isCreatingAccount ? 'Create Account' : 'Sign In'}</h2>
         {isCreatingAccount && (
