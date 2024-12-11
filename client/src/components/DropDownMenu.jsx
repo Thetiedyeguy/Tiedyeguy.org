@@ -3,16 +3,13 @@ import { useUser } from '../context/Context';
 import { Link } from 'react-router-dom'; // Assuming React Router is used
 import Modal from './Modal';
 import styles from './DropdownMenu.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const DropdownMenu = () => {
+  let navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {user, setUser} = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleSignOut = () => {
-    setUser(null); // Sign the user out
-    localStorage.removeItem('token');
-  };
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -31,8 +28,8 @@ const DropdownMenu = () => {
           {user ? (
             <>
               <span className={styles.username}>Welcome, {user.name}</span>
-              <button className={styles.signOutButton} onClick={handleSignOut}>
-                Sign Out
+              <button className={styles.profileButton} onClick={() => navigate(`/${user.username.toLowerCase()}`)}>
+                Profile
               </button>
             </>
           ) : (

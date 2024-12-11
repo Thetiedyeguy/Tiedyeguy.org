@@ -108,10 +108,11 @@ app.post("/api/yelp/v1/restaurants/:id/addReview", async (req, res) => {
 app.post("/api/users/v1/register", async (req, res) => {
     const { username, password, name } = req.body;
     try {
+        const normalizedUsername = username.toLowerCase();
         const hashedPassword = await bcrypt.hash(password, 10);
         const results = await db.query(
             "INSERT INTO users (username, password, name) VALUES ($1, $2, $3) RETURNING id, username, name",
-            [username, hashedPassword, name]
+            [normalizedUsername, hashedPassword, name]
         );
         res.status(201).json({
             status: "success",
@@ -131,7 +132,8 @@ app.post("/api/users/v1/register", async (req, res) => {
 app.post("/api/users/v1/login", async (req, res) => {
     const { username, password } = req.body;
     try {
-        const user = await db.query("SELECT * FROM users WHERE username = $1", [username]);
+        const normalizedUsername = username.toLowerCase();
+        const user = await db.query("SELECT * FROM users WHERE username = $1", [normalizedUsername]);
 
         if (user.rows.length === 0) {
             return res.status(401).json({
@@ -195,6 +197,93 @@ app.get("/api/users/v1/profile", async (req, res) => {
         });
     }
 });
+
+app.get("/api/users/v1/:username", async (req, res) => {
+    const { username } = req.params;
+    const normalizedUsername = username.toLowerCase();
+
+    try {
+        const userQuery = await db.query(
+            "SELECT id, name, email, phone_number, age FROM users WHERE username = $1",
+            [normalizedUsername]
+        );
+
+        if (userQuery.rows.length === 0) {
+            return res.status(404).json({ status: "error", message: "User not found" });
+        }
+
+        const postsQuery = await db.query(
+            "SELECT id, content, created_at FROM posts WHERE user_id = $1 ORDER BY created_at DESC",
+            [userQuery.rows[0].id]
+        );
+
+        res.status(200).json({
+            status: "success",
+            data: {
+                user: userQuery.rows[0],
+                posts: postsQuery.rows,
+            },
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ status: "error", message: "Internal server error" });
+    }
+});
+
+app.put("/api/users/v1/:username", async (req, res) => {
+    const { username } = req.params;
+    const normalizedUsername = username.toLowerCase();
+    const { name, email, phone_number, age } = req.body;
+
+    try {
+        const result = await db.query(
+            "UPDATE users SET name = $1, email = $2, phone_number = $3, age = $4 WHERE username = $5 RETURNING id, name, email, phone_number, age",
+            [name, email, phone_number, age, normalizedUsername]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ status: "error", message: "User not found" });
+        }
+
+        res.status(200).json({
+            status: "success",
+            data: { user: result.rows[0] },
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ status: "error", message: "Internal server error" });
+    }
+});
+
+app.post("/api/users/v1/:username/posts", async (req, res) => {
+    const { username } = req.params;
+    const { content } = req.body;
+    const normalizedUsername = username.toLowerCase();
+
+    try {
+        const userQuery = await db.query("SELECT id FROM users WHERE username = $1", [normalizedUsername]);
+
+        if (userQuery.rows.length === 0) {
+            return res.status(404).json({ status: "error", message: "User not found" });
+        }
+
+        const userId = userQuery.rows[0].id;
+
+        const result = await db.query(
+            "INSERT INTO posts (user_id, content) VALUES ($1, $2) RETURNING id, content, created_at",
+            [userId, content]
+        );
+
+        res.status(201).json({
+            status: "success",
+            data: { post: result.rows[0] },
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ status: "error", message: "Internal server error" });
+    }
+});
+
 
 
 const port = process.env.PORT || 3001;

@@ -1,0 +1,150 @@
+/* Main container */
+.profileContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Section headers */
+  .sectionHeader {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    color: #007bff;
+  }
+  
+  /* Profile information */
+  .profileInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Input fields */
+  .profileInfo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .profileInfo input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Save button */
+  .saveButton {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .saveButton:hover {
+    background-color: #218838;
+  }
+  
+  /* Blog posts */
+  .blogPosts {
+    margin-top: 20px;
+  }
+  
+  .blogPosts .post {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blogPosts .post p {
+    margin: 0 0 10px 0;
+  }
+  
+  .blogPosts .post small {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  /* New post textarea */
+  .newPostContainer {
+    margin-top: 20px;
+  }
+  
+  .newPostContainer textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+  }
+  
+  .newPostContainer textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Submit button */
+  .newPostContainer .submitButton {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .newPostContainer .submitButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .profileContainer {
+      padding: 15px;
+    }
+  
+    .profileInfo input,
+    .newPostContainer textarea {
+      font-size: 14px;
+    }
+  
+    .saveButton,
+    .submitButton {
+      font-size: 14px;
+    }
+  }
+
+  .signOutButton {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .signOutButton:hover {
+    background-color: #c82333;
+  }
+  
