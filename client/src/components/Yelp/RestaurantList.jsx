@@ -25,11 +25,10 @@ function RestaurantList() {
     const handleDelete = async (e, id) => {
         e.stopPropagation()
         try {
-            const response = await RestaurantFinder.delete(`/${id}`)
+            await RestaurantFinder.delete(`/${id}`)
             setRestaurants(restaurants.filter(restaurant => {
                 return restaurant.id !== id
             }))
-            console.log(response)
         }catch(err){
             console.log(err)
         }

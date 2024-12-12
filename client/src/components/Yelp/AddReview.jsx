@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import RestaurantFinder from "../../apis/RestaurantFinder";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import {useParams, useNavigate } from "react-router-dom";
+import { useUser } from "../../context/Context";
 import './Yelp.css';
 
 const AddReview = () => {
   const { id } = useParams();
-  const location = useLocation();
-  console.log(location);
   const history = useNavigate();
-  console.log(id);
 
-  const [name, setName] = useState("");
+  const { user: loggedInUser} = useUser();
+  const [name, setName] = useState(loggedInUser?.username);
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState("Rating");
 
@@ -22,8 +21,7 @@ const AddReview = () => {
         review: reviewText,
         rating,
       });
-      history.push("/");
-      history.push(location.pathname);
+      history("/yelp");
     } catch (err) {}
   };
   return (
@@ -33,12 +31,12 @@ const AddReview = () => {
           <div className="form-group col-8">
             <label htmlFor="name">Name</label>
             <input
-              value={name}
+              value={name || ''}
               onChange={(e) => setName(e.target.value)}
               id="name"
-              placeholder="name"
               type="text"
               className="form-control"
+              placeholder="name"
             />
           </div>
           <div className="form-group col-4">
@@ -65,6 +63,7 @@ const AddReview = () => {
             onChange={(e) => setReviewText(e.target.value)}
             id="Review"
             className="form-control"
+            placeholder="review"
           ></textarea>
         </div>
         <button

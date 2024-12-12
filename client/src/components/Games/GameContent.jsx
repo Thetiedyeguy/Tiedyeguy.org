@@ -3,7 +3,7 @@ import TicTacToe from "./TicTacToe";
 import ConnectFour from "./ConnectFour";
 
 const GameContent = () => {
-    const [selectedGame, setSelectedGame] = useState('TicTacToe');
+    const [selectedGame, setSelectedGame] = useState('Tic-Tac-Toe');
 
     const renderGame = () => {
         switch(selectedGame) {

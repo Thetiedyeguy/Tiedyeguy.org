@@ -305,6 +305,17 @@ app.get("/api/posts", async (req, res) => {
       res.status(500).json({ status: "error", message: "Failed to fetch posts" });
     }
   });
+
+  app.delete("/api/posts/:id", async (req, res) =>{
+    try{
+        await db.query("DELETE FROM posts where id = $1;", [req.params.id]);
+        res.status(204).json({
+            status: "success",
+        });
+    }catch(err){
+        console.log(err);
+    }
+});
   
 
 const port = process.env.PORT || 3001;
