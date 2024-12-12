@@ -48,7 +48,6 @@ const AllPostsPage = () => {
         <h1 className={styles.header}>Feed</h1>
         {posts.map((post) => (
             <div key={post.id} className={styles.post}>
-              {post.id}
               <div className={styles.postHeader}>
                   <h3>
                       {post.name}
