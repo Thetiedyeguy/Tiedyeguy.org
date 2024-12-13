@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const path = require('path');
 const cors = require("cors");
 const morgan = require("morgan");
 const bcrypt = require("bcrypt");
@@ -12,6 +13,17 @@ app.use(cors())
 app.use(express.json());
 
 app.use(morgan("dev"));
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+    res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+    res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
+    next();
+});
+
+app.use('/Snake', express.static(path.join(__dirname, '../client/public/Snake')));
 
 //get all restaurants
 app.get("/api/yelp/v1/restaurants", async (req, res) => {

@@ -29,7 +29,7 @@ const DropdownMenu = () => {
           {user ? (
             <>
               <span className={styles.username}>Welcome, {user.name}</span>
-              <button className={styles.profileButton} onClick={() => navigate(`/${user.username.toLowerCase()}`)}>
+              <button className={styles.profileButton} onClick={() => navigate(`/users/${user.username.toLowerCase()}`)}>
                 Profile
               </button>
             </>

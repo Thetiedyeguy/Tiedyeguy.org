@@ -30,6 +30,10 @@ function LinkList() {
                     <td>Posts</td>
                     <td>All the posts made on individuals profiles</td>
                 </tr>
+                <tr onClick={() => handleLinkSelect('snake')} key='snake'>
+                    <td>Snake</td>
+                    <td>My first Lua game made using Love</td>
+                </tr>
             </tbody>
         </table>
     </div>

@@ -51,7 +51,7 @@ const AllPostsPage = () => {
               <div className={styles.postHeader}>
                   <h3>
                       {post.name}
-                      (<Link to={`/${post.username}`} className={styles.usernameLink}>
+                      (<Link to={`/users/${post.username}`} className={styles.usernameLink}>
                           @{post.username}
                       </Link>)
                   </h3>

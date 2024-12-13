@@ -20,7 +20,7 @@ const App = () => {
                         <Route exact path = "/games" Component={Games}/>
                         <Route exact path = "/yelp/restaurants/:id/update" Component={UpdatePage}/>
                         <Route exact path = "/yelp/restaurants/:id" Component={DetailPage}/>
-                        <Route exact path= "/:username" element={<ProfilePage/>}/>
+                        <Route exact path= "/users/:username" element={<ProfilePage/>}/>
                         <Route exact path='/posts' element={<AllPostsPage/>}/>
                     </Routes>
                 </Router>
