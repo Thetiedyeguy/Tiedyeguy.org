@@ -14,17 +14,6 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use((req, res, next) => {
-    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-    res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-    res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
-    next();
-});
-
-app.use('/Snake', express.static(path.join(__dirname, '../client/public/Snake')));
-
 //get all restaurants
 app.get("/api/yelp/v1/restaurants", async (req, res) => {
     try{

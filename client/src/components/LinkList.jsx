@@ -8,6 +8,14 @@ function LinkList() {
         navigate(`/${id}`)
     }
 
+    const handleDownload = (id) => {
+        const link = 
+            process.env.NODE_ENV === "production"
+            ? `/${id}`
+            : `http://localhost:3000/${id}`
+        window.open(link);
+    }
+
   return (
     <div className='list-group'>
         <table className='table table-hover table-dark'>
@@ -30,9 +38,9 @@ function LinkList() {
                     <td>Posts</td>
                     <td>All the posts made on individuals profiles</td>
                 </tr>
-                <tr onClick={() => handleLinkSelect('snake')} key='snake'>
-                    <td>Snake</td>
-                    <td>My first Lua game made using Love</td>
+                <tr onClick={() => handleDownload('snake.zip')} key='snake'>
+                    <td>Snakes</td>
+                    <td>Download for my first Lua/Love game based on the classic snake game</td>
                 </tr>
             </tbody>
         </table>
