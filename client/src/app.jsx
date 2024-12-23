@@ -8,6 +8,7 @@ import Games from './routes/Games';
 import { ContextProvider } from './context/Context';
 import ProfilePage from './routes/ProfilePage';
 import AllPostsPage from './routes/AllPostsPage';
+import DownloadPage from './routes/DownloadPage';
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                         <Route exact path = "/yelp/restaurants/:id" Component={DetailPage}/>
                         <Route exact path= "/users/:username" element={<ProfilePage/>}/>
                         <Route exact path='/posts' element={<AllPostsPage/>}/>
+                        <Route exact path= '/downloads' element={<DownloadPage/>}/>
                     </Routes>
                 </Router>
             </div>

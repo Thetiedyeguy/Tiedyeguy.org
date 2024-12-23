@@ -9,7 +9,9 @@ const db = require("./db");
 const app = express();
 
 
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000', // Adjust to your frontend domain
+  }));
 app.use(express.json());
 
 app.use(morgan("dev"));
@@ -285,38 +287,19 @@ app.post("/api/users/v1/:username/posts", async (req, res) => {
     }
 });
 
-app.get("/api/posts", async (req, res) => {
-    try {
-      const postsQuery = await db.query(
-        `SELECT posts.id, posts.content, posts.created_at, 
-                users.username, users.name 
-         FROM posts 
-         JOIN users ON posts.user_id = users.id 
-         ORDER BY posts.created_at DESC`
-      );
-  
-      res.status(200).json({
-        status: "success",
-        data: {
-          posts: postsQuery.rows,
-        },
-      });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ status: "error", message: "Failed to fetch posts" });
-    }
-  });
+// Static files directory
+const filesDir = path.join(__dirname, 'downloads');
+app.use('/downloads', express.static(filesDir));
 
-  app.delete("/api/posts/:id", async (req, res) =>{
-    try{
-        await db.query("DELETE FROM posts where id = $1;", [req.params.id]);
-        res.status(204).json({
-            status: "success",
-        });
-    }catch(err){
-        console.log(err);
-    }
+// Get list of available files
+app.get('/api/projects', (req, res) => {
+  const files = [
+    { name: 'Project 1', fileName: 'Card-Game.zip', description: 'A detailed project about XYZ' },
+    { name: 'Project 2', fileName: 'CardGameApple.zip', description: 'A document-based project' },
+  ];
+  res.status(200).json(files);
 });
+
   
 
 const port = process.env.PORT || 3001;
