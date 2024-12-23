@@ -294,8 +294,8 @@ app.use('/downloads', express.static(filesDir));
 // Get list of available files
 app.get('/api/projects', (req, res) => {
   const files = [
-    { name: 'Project 1', fileName: 'Card-Game.zip', description: 'A detailed project about XYZ' },
-    { name: 'Project 2', fileName: 'CardGameApple.zip', description: 'A document-based project' },
+    { name: 'Windows Card Game', fileName: 'Card-Game.zip', description: 'A card game Ive been making for fun' },
+    { name: 'Mac Card Game', fileName: 'CardGameApple.zip', description: 'The mac download for the same game' },
   ];
   res.status(200).json(files);
 });
