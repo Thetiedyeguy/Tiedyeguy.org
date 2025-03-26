@@ -34,6 +34,14 @@ function LinkList() {
                     <td>Downloads</td>
                     <td>Download links to all my projects that can not be hosted directly on my website. Currently mainly my Love/Lua Games</td>
                 </tr>
+                <tr onClick={() => window.open('https://cronkiteelectric.us', '_blank')} key='electrician site'>
+                    <td>CronkiteElectric.us</td>
+                    <td>Commissioned website for a local electrician. Finished making the website, however am waiting to get feedback from the owner to update the information to make it more accurate</td>
+                </tr>
+                <tr onClick={() => window.open('https://oliviabatesdesign.com', '_blank')} key='design site'>
+                    <td>OliviaBatesDesign.com</td>
+                    <td>Currently working with Olivia Bates, a design and communications major, on a website to serve as her portfolio. Currently still a work in progress, but still looks very good.</td>
+                </tr>
             </tbody>
         </table>
     </div>

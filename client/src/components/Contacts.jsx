@@ -23,7 +23,7 @@ const Contacts = () => {
           <strong>Phone:</strong> (209) 568-7740
         </li>
         <li>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer">
             Resume
           </a>
         </li>
